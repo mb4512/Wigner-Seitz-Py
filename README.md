@@ -34,7 +34,7 @@ The script is run
 python3 ws-analysis.py REFERENCE.DUMP DISTORTED.DUMP -host ID -export EXPORT.DUMP
 ```
 
-where `REFERENCE.DUMP` is the path to a LAMMPS dump file of the pristine reference lattice used for Wigner-Seitz analysis, `DISTORTED.DUMP` is the dump file containing distorted or damaged atomic structure. The optional `-host ID` flag tells the script which atomic ID to use as the host lattice (default: first occurring species in `REFERENCE.DUMP`) and the optional `-export EXPORT.DUMP` flag tells the script to what path the Wigner-Seitz output coordinates are stored at (default: `ws-output.dump`)
+where `REFERENCE.DUMP` is the path to a LAMMPS dump file of the pristine reference lattice used for Wigner-Seitz analysis, `DISTORTED.DUMP` is the dump file containing distorted or damaged atomic structure. The optional `-host ID` flag tells the script which atomic ID to use as the host lattice (default: first occurring species in `REFERENCE.DUMP`) and the optional `-export EXPORT.DUMP` flag tells the script to what path the Wigner-Seitz output coordinates are exported to (default: `ws-output.dump`)
 
 With the sample files gives in the `test` subdirectory, the script can be executed as
 ```
