@@ -48,6 +48,11 @@ def main():
         print ("Defaulting to using atom type %d as host lattice." % host)
     print ()
 
+    if not epath:
+        epath = "ws-output.dump"
+        print ("Defaulting to using %s as output path." % epath)
+    print ()
+
 
     # import distorted cell
     print ("Importing distorted cell data %s... " % path, end='')
