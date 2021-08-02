@@ -27,7 +27,7 @@ pip3 install sklearn
 
 ## Running the code 
 
-The script only supports serial mode. The LAMMPS dump file is expected to only contain the columns `ITEM: ATOMS id type x y z` in the exact order. The script was tested only for orthogonal boxes, but in principle also supports non-orthogonal boxes.
+The script only supports serial mode. The LAMMPS dump file is expected to only contain the columns `ITEM: ATOMS id type x y z` in the exact order. The script was tested only for orthogonal boxes, but in principle should also work for non-orthogonal boxes just the same.
 
 The script is run
 ```
