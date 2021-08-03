@@ -109,7 +109,7 @@ def main():
     else:
         _hostxyz = datap.data[:,1:]
 
-    neb_indices = ktree0.query(_hostxyz, k=1, distance_upper_bound=amax, workers=-1)[1] 
+    neb_indices = ktree0.query(_hostxyz, k=1, distance_upper_bound=amax)[1] 
     neb_indices = repeated_ids[neb_indices]
 
     # find number of vacant sites
@@ -136,7 +136,7 @@ def main():
                 continue
 
             _restxyz = datap.data[datap.data[:,0] == _sp, 1:]
-            neb_indices = ktree0.query(_restxyz, k=1, distance_upper_bound=amax, workers=-1)[1]
+            neb_indices = ktree0.query(_restxyz, k=1, distance_upper_bound=amax)[1]
             neb_indices = repeated_ids[neb_indices]
 
             # find number of vacant sites
