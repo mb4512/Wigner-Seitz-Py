@@ -31,10 +31,10 @@ The script only supports serial mode. The LAMMPS dump file is expected to only c
 
 The script is run
 ```
-python3 ws-analysis.py REFERENCE.DUMP DISTORTED.DUMP -host ID -export EXPORT.DUMP
+python3 ws-analysis.py REFERENCE.DUMP DISTORTED.DUMP -host ID -export EXPORT.DUMP -wsmode WSMODE
 ```
 
-where `REFERENCE.DUMP` is the path to a LAMMPS dump file of the pristine reference lattice used for Wigner-Seitz analysis, `DISTORTED.DUMP` is the dump file containing distorted or damaged atomic structure. The optional `-host ID` flag tells the script which atomic ID to use as the host lattice (default: first occurring species in `REFERENCE.DUMP`) and the optional `-export EXPORT.DUMP` flag tells the script to what path the Wigner-Seitz output coordinates are exported to (default: `ws-output.dump`)
+where `REFERENCE.DUMP` is the path to a LAMMPS dump file of the pristine reference lattice used for Wigner-Seitz analysis, `DISTORTED.DUMP` is the dump file containing distorted or damaged atomic structure. The optional `-host ID` flag tells the script which atomic ID to use as the host lattice (default: first occurring species in `REFERENCE.DUMP`) and the optional `-export EXPORT.DUMP` flag tells the script to what path the Wigner-Seitz output coordinates are exported to (default: `ws-output.dump`). The optional `wsmode WSMODE` flag sets whether the positions of implanted species are mapped to host lattice sites using Wigner-Seitz analysis with the appropriate occupancy (`WSMODE default`), or whether the positions of implanted species are left unchanged (`WSMODE host`).
 
 With the sample files gives in the `test` subdirectory, the script can be executed as
 ```
