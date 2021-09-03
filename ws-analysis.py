@@ -25,6 +25,7 @@ def main():
 
     host = None
     epath = None
+    wsmode = None
     for _i,_arg in enumerate(sys.argv):
 
         # atom type id of host lattice
@@ -34,6 +35,11 @@ def main():
         # WS output file export path 
         if _arg == "-export":
             epath = sys.argv[_i+1]
+
+        # WS output file export path 
+        if _arg == "-wsmode":
+            wsmode = sys.argv[_i+1]
+
 
     # import reference cell
     print ("Importing reference cell data %s... " % path0, end='')
@@ -52,6 +58,12 @@ def main():
         epath = "ws-output.dump"
         print ("Defaulting to using %s as output path." % epath)
     print ()
+
+    if not wsmode:
+        epath = "default"
+        print ("Defaulting to using %s Wigner-Seitz mode for implanted species." % wsmode)
+    print ()
+
 
 
     # import distorted cell
@@ -130,7 +142,7 @@ def main():
     occ_array   = np.r_[ucounts[ucounts>1], [0]*len(vac_indices)]
 
     # next, find defect content of other atomic species
-    if host:
+    if host and (wsmode == "default"):
         for _sp in species:
             if _sp == host:
                 continue
@@ -155,6 +167,18 @@ def main():
             xyz_array   = np.r_[xyz_array, data0.data[occ_indices,1:]]
             types_array = np.r_[types_array, [_sp]*len(occ_indices)]
             occ_array   = np.r_[occ_array, ucounts[ucounts>0]]
+
+    if host and (wsmode == "host"):
+        for _sp in species:
+            if _sp == host:
+                continue
+
+            _restxyz = datap.data[datap.data[:,0] == _sp, 1:] 
+
+            # add implanted species for exporting
+            xyz_array   = np.r_[xyz_array, _restxyz] 
+            types_array = np.r_[types_array, [_sp]*len(_restxyz)]
+            occ_array   = np.r_[occ_array,  [1]*len(_restxyz)]
 
     types_array = np.array(types_array, dtype=np.int64)
     occ_array = np.array(occ_array, dtype=np.int64)
