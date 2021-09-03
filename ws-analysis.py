@@ -60,7 +60,7 @@ def main():
     print ()
 
     if not wsmode:
-        epath = "default"
+        wsmode = "default"
         print ("Defaulting to using %s Wigner-Seitz mode for implanted species." % wsmode)
     print ()
 
@@ -175,6 +175,8 @@ def main():
 
             _restxyz = datap.data[datap.data[:,0] == _sp, 1:] 
 
+            print("Implanted species %d, n_atoms = %d" % (_sp, len(_restxyz)))
+            
             # add implanted species for exporting
             xyz_array   = np.r_[xyz_array, _restxyz] 
             types_array = np.r_[types_array, [_sp]*len(_restxyz)]
